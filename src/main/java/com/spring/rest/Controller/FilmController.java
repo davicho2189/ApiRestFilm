@@ -61,7 +61,7 @@ public class FilmController {
 	    }
 	  
 	  	@PutMapping("updFilm/{id}")	
-	    public ResponseEntity<?> addFilm(@PathVariable long  id,@RequestBody Film film ) 
+	    public ResponseEntity<?> updateFilm(@PathVariable long  id,@RequestBody Film film ) 
 	  	{
 	  		
 	        try {

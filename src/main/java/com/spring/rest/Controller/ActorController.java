@@ -65,22 +65,7 @@ public class ActorController {
 	        }
 	    }
 	  	
-		
-	  	
-//	  	@PostMapping("/orders/{id}/pay")
-//		ResponseEntity<?> pay(@PathVariable Long id) {
-//
-//			Order order = this.repository.findById(id).orElseThrow(() -> new OrderNotFoundException(id));
-//
-//			if (valid(order.getOrderStatus(), OrderStatus.PAID_FOR)) {
-//
-//				order.setOrderStatus(OrderStatus.PAID_FOR);
-//				return ResponseEntity.ok(repository.save(order));
-//			}
-//
-//			return ResponseEntity.badRequest()
-//					.body("Transitioning from " + order.getOrderStatus() + " to " + OrderStatus.PAID_FOR + " is not valid.");
-//		}
+
 	  	
 	  
 }
