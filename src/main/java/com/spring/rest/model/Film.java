@@ -1,28 +1,37 @@
 package com.spring.rest.model;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
-@Table(name = "film")
-@Entity
-@Builder
-@Data
+
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Film {
+@ToString
+@Table(name = "film")
+@Entity
+public class Film 
+{
 	
     @Id	
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long filmId;
     
 	private String title;
@@ -53,9 +62,9 @@ public class Film {
 
 	
 	private String specialFeatures;
-	
-//	@OneToMany(mappedBy="film")
-//	private List<FilmActor> filmActors;
+		
+	@OneToMany(mappedBy="film")
+	private List<FilmActor> filmActors;
 	
 
 }

@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -12,34 +13,40 @@ import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Builder.Default;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 @Table(name = "film_actor")
-@Entity
-@Data
+@Getter
+@Setter
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Entity
 public class FilmActor implements Serializable {
-	
+
 	private static final long serialVersionUID = 1L;
 //	private long actor_id;	
 //
 //	private long film_id;
-	
+
 	@EmbeddedId
-	private FilmActorId filmActorId;		
-    		
+	private FilmActorKey filmActorKey;
+
 	@Default
-    private LocalDateTime last_update = LocalDateTime.now();
-	
-//	@ManyToOne
-//    @JoinColumn(name = "actor_id", nullable = false, insertable = false, updatable = false)
-//	private Actor actor;
-//
-//	
-//	@ManyToOne
-//	@JoinColumn(name = "film_id", nullable = false, insertable = false, updatable = false)
-//	private Film film;
+	private LocalDateTime last_update = LocalDateTime.now();
+
+	@ManyToOne
+	@JoinColumn(name = "actor_id", nullable = false, insertable = false, updatable = false)
+	private Actor actor;
+
+	@ManyToOne
+	@JoinColumn(name = "film_id", nullable = false, insertable = false, updatable = false)
+	private Film film;
+
+
+
 }

@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,12 +18,13 @@ import lombok.Builder.Default;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
-@Table(name = "actor")
+
 @Builder
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
+@Table(name = "actor")
 public class Actor implements Serializable
 { 
 	
@@ -38,6 +40,8 @@ public class Actor implements Serializable
     private LocalDateTime last_update = LocalDateTime.now();
     
   
-//  	@OneToMany(mappedBy="actor")
-//  	private List<FilmActor> filmActors;
+  	@OneToMany(fetch = FetchType.EAGER,mappedBy="actor")
+  	private List<FilmActor> filmActors; 	
+
+  	
 }
