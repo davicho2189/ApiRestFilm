@@ -28,9 +28,6 @@ import lombok.ToString;
 public class FilmActor implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-//	private long actor_id;	
-//
-//	private long film_id;
 
 	@EmbeddedId
 	private FilmActorKey filmActorKey;
