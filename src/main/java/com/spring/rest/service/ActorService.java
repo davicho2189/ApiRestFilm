@@ -1,6 +1,7 @@
 package com.spring.rest.service;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -53,7 +54,7 @@ public class ActorService implements BaseService<Actor>{
 			Actor _actor = entityOptional.get();
 			_actor.setFirst_name(actor.getFirst_name());
 			_actor.setLast_name(actor.getLast_name());		
-			_actor.setLast_update(LocalDateTime.now());
+			_actor.setLast_update(new Date(System.currentTimeMillis()));
 			actorRepository.save(_actor);
 			return _actor;
 			  

@@ -1,11 +1,10 @@
 package com.spring.rest.model;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.util.Date;
 
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -37,7 +36,7 @@ public class FilmActor implements Serializable {
 	private FilmActorKey filmActorKey;
 
 	@Default
-	private LocalDateTime last_update = LocalDateTime.now();
+	private Date last_update = new Date(System.currentTimeMillis());
 
 	@ManyToOne
 	@JoinColumn(name = "actor_id", nullable = false, insertable = false, updatable = false)
