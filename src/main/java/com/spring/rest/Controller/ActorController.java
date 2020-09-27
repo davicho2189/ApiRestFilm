@@ -82,7 +82,7 @@ public class ActorController {
 	            return ResponseEntity.status(HttpStatus.OK).body(filmActorService.findAll());
 	            
 	        } catch (Exception e) {
-	            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\":\"Error. no se pudo eliminar.\"}");
+	            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\":\"Error. no se pudo listar film actor.\"}");
 	        }
 	    }
 	  	
