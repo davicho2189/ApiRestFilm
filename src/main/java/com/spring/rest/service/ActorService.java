@@ -25,6 +25,7 @@ public class ActorService implements BaseService<Actor>{
 	public List<Actor> findAll() throws Exception {
 		try{
             List<Actor> actores = actorRepository.findAll();
+//            actores.forEach(System.out::println);
             return actores;
         } catch (Exception e){
             throw new Exception(e.getMessage());

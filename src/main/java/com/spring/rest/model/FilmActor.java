@@ -7,24 +7,23 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Builder.Default;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-@Table(name = "film_actor")
+
 @Getter
 @Setter
-@ToString
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
+@ToString
 @Entity
+@Table(name = "film_actor")
 public class FilmActor implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -32,15 +31,17 @@ public class FilmActor implements Serializable {
 	@EmbeddedId
 	private FilmActorKey filmActorKey;
 
-	@Default
-	private Date last_update = new Date(System.currentTimeMillis());
+//    @Temporal(TemporalType.TIMESTAMP)
+	private Date last_update ;
 
 	@ManyToOne
-	@JoinColumn(name = "actor_id", nullable = false, insertable = false, updatable = false)
+	@MapsId("actor_id")
+	@JoinColumn(name = "actor_id")
 	private Actor actor;
 
 	@ManyToOne
-	@JoinColumn(name = "film_id", nullable = false, insertable = false, updatable = false)
+	@MapsId("film_id")
+    @JoinColumn(name = "film_id")
 	private Film film;
 
 

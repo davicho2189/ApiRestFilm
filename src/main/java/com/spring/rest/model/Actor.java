@@ -1,7 +1,6 @@
 package com.spring.rest.model;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -13,17 +12,14 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Builder.Default;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-
-@Builder
 @Getter
 @Setter
 @ToString
@@ -42,12 +38,12 @@ public class Actor implements Serializable
 	private long actor_id;
     private String first_name;
     private String last_name;    
-    @Default
-    private Date last_update = new Date(System.currentTimeMillis());
+//    @Temporal(TemporalType.TIMESTAMP)
+    private Date last_update ;
     
-  
-//  	@OneToMany(fetch = FetchType.EAGER,mappedBy="actor")
-//  	private List<FilmActor> filmActors; 	
+    @JsonIgnore
+  	@OneToMany(fetch = FetchType.EAGER,mappedBy="actor")
+  	private List<FilmActor> filmActors; 	
 
   	
 }

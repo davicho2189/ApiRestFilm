@@ -1,5 +1,7 @@
 package com.spring.rest.Controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.spring.rest.model.Actor;
 import com.spring.rest.service.ActorService;
+import com.spring.rest.service.FilmActorService;
 
 @RestController
 public class ActorController {
@@ -21,11 +24,16 @@ public class ActorController {
 	@Autowired
 	private ActorService ActorService;
 	
+	@Autowired
+	private FilmActorService filmActorService;
+	
 	
 	  @GetMapping("all")
 	    public ResponseEntity<?> getAll() {
 	        try {
-	            return ResponseEntity.status(HttpStatus.OK).body(ActorService.findAll());
+	        	List<Actor> lista = ActorService.findAll();     
+	            return ResponseEntity.status(HttpStatus.OK).body(lista);
+	           
 	        } catch (Exception e) {
 	            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\":\"Error. Por favor intente más tarde lista.\"}");
 	        }
@@ -65,7 +73,18 @@ public class ActorController {
 	        }
 	    }
 	  	
-
+		@GetMapping("FilmActor")	
+	    public ResponseEntity<?> GetFilActor() 
+	  	{
+	  		
+	        try {
+	        
+	            return ResponseEntity.status(HttpStatus.OK).body(filmActorService.findAll());
+	            
+	        } catch (Exception e) {
+	            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\":\"Error. no se pudo eliminar.\"}");
+	        }
+	    }
 	  	
 	  
 }

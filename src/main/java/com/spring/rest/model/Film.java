@@ -1,13 +1,18 @@
 package com.spring.rest.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,8 +26,8 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-@Table(name = "film")
 @Entity
+@Table(name = "film")
 public class Film 
 {
 	
@@ -34,8 +39,9 @@ public class Film
 
 	private String description;
 	
-	private byte languageId;
+	private int languageId;
 	
+//  @Temporal(TemporalType.TIMESTAMP)
 	private Date  lastUpdate;
 
 	private int length;
@@ -58,9 +64,10 @@ public class Film
 
 	
 	private String specialFeatures;
-		
-//	@OneToMany(mappedBy="film")
-//	private List<FilmActor> filmActors;
+	
+	@JsonIgnore
+	@OneToMany(fetch = FetchType.EAGER,mappedBy="film")
+	private List<FilmActor> filmActors;
 	
 
 }
