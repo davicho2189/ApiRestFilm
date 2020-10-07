@@ -47,8 +47,7 @@ public class FilmController {
 	            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\":\"Error. Por favor intente más tarde lista.\"}");
 	        }
 	    }  
-	  
-	
+	  	
 	  
 	  @PostMapping("addFilm")
 	  @ResponseBody
@@ -61,7 +60,7 @@ public class FilmController {
 	    }
 	  
 	  	@PutMapping("updFilm/{id}")	
-	    public ResponseEntity<?> addFilm(@PathVariable long  id,@RequestBody Film film ) 
+	    public ResponseEntity<?> updateFilm(@PathVariable long  id,@RequestBody Film film ) 
 	  	{
 	  		
 	        try {

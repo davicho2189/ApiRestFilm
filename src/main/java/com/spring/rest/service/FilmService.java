@@ -8,7 +8,6 @@ import java.util.stream.Collectors;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
 import com.spring.rest.model.Film;
@@ -46,17 +45,11 @@ public class FilmService implements BaseService<Film>{
 	public List<Film> findByrentalDuration(int id) throws Exception {
 		List<Film> films = filmRepository.findAll();
 		return films.stream().filter(e->e.getRentalDuration()==id).collect(Collectors.toList());
-//		.stream()
-//        .filter(e -> unavailableItems.contains(e))
-//        .collect(Collectors.toList());
 	}
 	
 	public List<Film> findByReleaseYear(int year) throws Exception {
 		List<Film> films = filmRepository.findAll();
 		return films.stream().filter(e->e.getReleaseYear()==year).collect(Collectors.toList());
-//		.stream()
-//        .filter(e -> unavailableItems.contains(e))
-//        .collect(Collectors.toList());
 	}
 	
 	@Transactional
